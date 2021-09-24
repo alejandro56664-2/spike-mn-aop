@@ -1,0 +1,15 @@
+description = 'This module containts ...  my-function-powertools'
+
+dependencies {
+    //dependencias base
+    implementation(group: 'io.micronaut.aws', name: 'micronaut-function-aws', version: "${micronautAwsVersion}")
+    implementation(group: 'com.amazonaws', name: 'aws-lambda-java-events', version: "${awsLambdaEventsVersion}")
+
+    implementation(group: 'org.mapstruct', name: 'mapstruct', version: "${mapstructVersion}")
+    annotationProcessor(group: 'org.mapstruct', name: 'mapstruct-processor', version:  "${mapstructVersion}")
+    
+}
+// dependencies: config-manager-ssm
+dependencies {
+    // TODO agregar dependencias a aws
+}

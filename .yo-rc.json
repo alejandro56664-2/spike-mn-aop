@@ -1,0 +1,19 @@
+{
+  "generator-lambda-java-mn": {
+    "appVersion": "0.1.0",
+    "pkgBase": "co.com.spike.lambda.demo",
+    "functionName": "my-function-powertools",
+    "functionsList": [
+      "my-function-mdc",
+      "my-function-powertools"
+    ],
+    "my-function-mdc": {
+      "fn-controller-dependencies": true,
+      "config-manager-ssm-dependencies": true
+    },
+    "my-function-powertools": {
+      "fn-controller-dependencies": true,
+      "config-manager-ssm-dependencies": true
+    }
+  }
+}
