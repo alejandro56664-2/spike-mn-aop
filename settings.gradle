@@ -1,3 +1,2 @@
 rootProject.name = 'spike-mn-aop'
-include 'my-function-mdc'
-include 'my-function-aop'
+include 'my-function-aop-mdc'

@@ -13,16 +13,25 @@ Spike para el uso de AOP en Micronaut para el manejo de logs transaccionales en 
 ---
 ## Motivación
 
+Se requiere estandarizar el mecanismo de registros de auditoría para funciones lambda creadas usando
+Micronaut utilizando una estrategia que no sobrecargue a los desarrolladores y permitiéndoles enfocarse 
+en actividades que den valor al negocio.
+
+Puede encontrar una presentación sobre mejores prácticas de logs en Java y MS [aquí]().
+
 ## Mapeo del contexto en los logs
 
-En la función ```my-function-mdc``` existen dos implementaciones diferentes:
+En la función ```my-function-aop-mdc``` se muestra un ejemplo para usar MDC con SLF4J.
 
-- La arquitectura de SLFJ la podemos observar a continuación:
+- La arquitectura de SLF4J la podemos observar a continuación:
 
 ![diagrama de secuencia](https://logback.qos.ch/manual/images/chapters/architecture/underTheHoodSequence2.gif)
 _Tomado de: https://logback.qos.ch/manual/underTheHood.html_
 
-En esta podemos observar las diferentes capas que tiene el componente SLFJ.
+En esta podemos observar las diferentes capas que tiene el componente SLF4J.
+
+Un mecanismo importante consiste en el MDC, el cual nos permite agregar gran cantidad de información de 
+contexto, que puede ser muy útil a la hora de diagnosticar errores en ambientes productivos.
 
 ## Introducción AOP
 
@@ -64,17 +73,28 @@ Existen varias herramientas disponibles para realizar AOP con Java, entre las qu
  - Spring AOP 
  - Micronaut AOP
 
-Para este Spike, se decide explorar a profundidad Micronaut AOP, debido a que es el _framework_ elegido 
-para desarrollar funciones lambdas. 
+Micronaut es un _framework_ que realiza inyección de dependencias sin hacer uso del mecanismo de _reflexión_ por lo 
+al igual que las herramientas que provee para AOP. Por esta razón, se decide explorar a profundidad Micronaut AOP.
+
+Los tipos de _Advice_ soportados por Micronaut son los siguientes:
+
+- _Around Advice_: Se decora un método para agregar nuevo comportamiento.
+- _Introduction Advice_: Introduce nuevo comportamiento a una clase existente. Ejemplo _Micronaut Data_,
+en el cual se define una interfaz y el compilador agrega las implementaciones, introduciendo el nuevo comportamiento
+  por el desarrollador.
+  
+- _Adapter Advice_: Permite introducir un nuevo _Bean_ que implemente un tipo SAM (_Single Abstract Method_), es decir,
+una interfaz con un solo método.
+  
+En este spike se realizan pruebas de _Around Advice_ y _Introduction Advice_ y finalmente se realiza una implementación sencilla
+de un Logger utilizando MDC.
 
 ## Recursos para el desarrollador
 
-Actualmente existen dos funciones:
+Actualmente existen una funcion:
 
-- ```my-function-mdc```: En esta función se revisa el uso de MDC con SLFJ.
-- ```my-function-aop```: En esta función se revisa como crear un aspecto para el registro de logs con Micronaut.
+- ```my-function-aop-mdc```: En esta función se revisa como crear un aspecto para el registro de logs con Micronaut, SLF4J y MDC.
 
-Cada una sirve de ejemplo para las tecnologías en cuestión.
 El proyecto fue creado con el generador: [lambda-java-mn](https://github.com/alejandro56664-adl/spike-yeoman-aws-lambda)
 
 ### Build project
@@ -89,21 +109,21 @@ El proyecto fue creado con el generador: [lambda-java-mn](https://github.com/ale
 ./gradlew clean test
 ```
 
-### Run my-function-mdc local with SAM
-
-Handler: co.com.spike.lambda.demo.my.function.mdc.controller.LambdaController::execute
-
-```bash
-sam local invoke myfunctionmdc --event ./events/my-function-mdc-generic.json
-```
-
-### Run my-function-aop local with SAM
+### Run my-function-aop-mdc local with SAM
 
 Handler: co.com.spike.lambda.demo.my.function.aop.controller.LambdaController::execute
 
 ```bash
-sam local invoke myfunctionaop --event ./events/my-function-aop-generic.json
+sam local invoke myfunctionaopmdc --event ./events/my-function-aop-mdc-generic.json
 ```
+
+Pasos para realizar las pruebas:
+
+1. Intente ejecutar la función localmente, activando y desactivando la bandera ```useMDC```.
+
+2. Agregue las anotaciones ```@Logging``` en las clases ```LambdaServiceImpl``` y ```TransferServiceImpl```.
+
+3. Puede ver el funcionamiento del mecanismo de AOP en Micronaut, ejecutando las pruebas del paquete ```Advice```.
 
 Links de interés sobre Micronaut:
 

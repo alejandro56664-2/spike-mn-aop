@@ -1,0 +1,20 @@
+description = 'This module containts ...  my-function-aop-mdc'
+
+dependencies {
+    //dependencias base
+    implementation(group: 'io.micronaut.aws', name: 'micronaut-function-aws', version: "${micronautAwsVersion}")
+
+    implementation(group: 'org.mapstruct', name: 'mapstruct', version: "${mapstructVersion}")
+    annotationProcessor(group: 'org.mapstruct', name: 'mapstruct-processor', version:  "${mapstructVersion}")
+
+}
+
+dependencies {
+    annotationProcessor "io.micronaut:micronaut-inject-java:$micronautVersion"
+    implementation "io.micronaut:micronaut-aop:$micronautVersion"
+
+    implementation(group: 'ch.qos.logback', name: 'logback-classic', version: "${logbackClassicVersion}")
+    implementation(group: 'ch.qos.logback.contrib', name: 'logback-json-classic', version: "${logbackContribVersion}")
+    implementation(group: 'ch.qos.logback.contrib', name: 'logback-jackson', version: "${logbackContribVersion}")
+
+}

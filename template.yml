@@ -1,18 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  myfunctionmdc:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: co.com.spike.lambda.demo.my.function.mdc.controller.LambdaController::execute
-      Runtime: java8
-      CodeUri: './my-function-mdc/build/distributions/my-function-mdc-0.1.0.zip'
-      MemorySize: 512
-      Timeout: 30
-      Environment:
-        Variables:
-          ENVIRONMENT: 'dev'
-  myfunctionaop:
+  myfunctionaopmdc:
     Type: AWS::Serverless::Function
     Properties:
       Handler: co.com.spike.lambda.demo.my.function.aop.controller.LambdaController::execute

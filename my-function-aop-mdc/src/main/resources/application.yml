@@ -1,0 +1,4 @@
+micronaut:
+  application:
+    name: my-function-aop-mdc
+    useMDC: false
