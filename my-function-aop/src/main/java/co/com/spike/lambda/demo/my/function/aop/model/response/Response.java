@@ -1,11 +1,10 @@
-package co.com.spike.lambda.demo.my.function.mdc.model.response;
+package co.com.spike.lambda.demo.my.function.aop.model.response;
 
 import io.micronaut.core.annotation.Introspected;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-
 
 @NoArgsConstructor
 @Data

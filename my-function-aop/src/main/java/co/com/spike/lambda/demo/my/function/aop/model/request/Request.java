@@ -1,4 +1,4 @@
-package co.com.spike.lambda.demo.my.function.mdc.model.request;
+package co.com.spike.lambda.demo.my.function.aop.model.request;
 
 import io.micronaut.core.annotation.Introspected;
 import lombok.AccessLevel;

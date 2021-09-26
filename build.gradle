@@ -10,6 +10,7 @@ buildscript {
 
     dependencies {
         classpath "io.franzbecker:gradle-lombok:$gradleLombokVersion"
+        classpath "gradle.plugin.de:AspectjGradlePlugin:$gradleAspectjVersion"
     }
 }
 
@@ -22,6 +23,7 @@ allprojects {
         }
     }
     apply plugin: "io.franzbecker.gradle-lombok"
+
     test {
         useJUnitPlatform()
     }
@@ -36,7 +38,6 @@ subprojects {
         implementation(group: 'io.micronaut', name: 'micronaut-validation', version: "${micronautVersion}")
         implementation(group: 'io.micronaut', name: 'micronaut-runtime', version: "${micronautVersion}")
         implementation(group: 'io.micronaut', name: 'micronaut-inject', version: "${micronautVersion}")
-        implementation(group: 'ch.qos.logback', name: 'logback-classic', version: "${logbackClassicVersion}")
 
         compileOnly(group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}")
         annotationProcessor(group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}")

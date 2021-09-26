@@ -1,7 +1,7 @@
-package co.com.spike.lambda.demo.my.function.mdc.config;
+package co.com.spike.lambda.demo.my.function.aop.config;
 
-import co.com.spike.lambda.demo.my.function.mdc.model.Configuration;
-import co.com.spike.lambda.demo.my.function.mdc.enums.ParamKey;
+import co.com.spike.lambda.demo.my.function.aop.model.Configuration;
+import co.com.spike.lambda.demo.my.function.aop.enums.ParamKey;
 import io.micronaut.core.annotation.Introspected;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +48,7 @@ public class ConfigRetriever {
 
   private Map<String, String> getParamsMap(List<String> paramKeys, String functionName) {
     //TODO implementar con la dependencias a aws
-    log.debug("Se consultan los parámetros definidos por {} para la función: {}", paramKeys, functionName);
+    log.debug("Se consultan los parametros definidos por {} para la función: {}", paramKeys, functionName);
     return new HashMap<>();
   }
 

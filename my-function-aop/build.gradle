@@ -1,0 +1,10 @@
+description = 'This module containts ...  my-function-aop'
+
+dependencies {
+    //dependencias base
+    implementation(group: 'io.micronaut.aws', name: 'micronaut-function-aws', version: "${micronautAwsVersion}")
+
+    implementation(group: 'org.mapstruct', name: 'mapstruct', version: "${mapstructVersion}")
+    annotationProcessor(group: 'org.mapstruct', name: 'mapstruct-processor', version:  "${mapstructVersion}")
+
+}

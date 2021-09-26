@@ -12,12 +12,12 @@ Resources:
       Environment:
         Variables:
           ENVIRONMENT: 'dev'
-  myfunctionpowertools:
+  myfunctionaop:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: co.com.spike.lambda.demo.my.function.powertools.controller.LambdaController::execute
+      Handler: co.com.spike.lambda.demo.my.function.aop.controller.LambdaController::execute
       Runtime: java8
-      CodeUri: './my-function-powertools/build/distributions/my-function-powertools-0.1.0.zip'
+      CodeUri: './my-function-aop/build/distributions/my-function-aop-0.1.0.zip'
       MemorySize: 512
       Timeout: 30
       Environment:

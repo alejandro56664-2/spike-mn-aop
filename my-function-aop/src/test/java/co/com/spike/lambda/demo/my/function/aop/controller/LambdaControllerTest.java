@@ -1,10 +1,9 @@
-package co.com.spike.lambda.demo.my.function.mdc.controller;
+package co.com.spike.lambda.demo.my.function.aop.controller;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import co.com.spike.lambda.demo.my.function.mdc.model.request.Request;
-import co.com.spike.lambda.demo.my.function.mdc.model.response.Response;
-import co.com.spike.lambda.demo.my.function.mdc.service.TransferService;
+import co.com.spike.lambda.demo.my.function.aop.model.request.Request;
+import co.com.spike.lambda.demo.my.function.aop.model.response.Response;
+import co.com.spike.lambda.demo.my.function.aop.service.TransferService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,6 +20,6 @@ class LambdaControllerTest {
   @Test
   void executeTest() {
     Response output = lambdaController.execute(Request.builder().build());
-    assertNotNull(output);
+    Assertions.assertNotNull(output);
   }
 }

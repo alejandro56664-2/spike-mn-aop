@@ -1,24 +1,31 @@
 package co.com.spike.lambda.demo.my.function.mdc.service.impl;
 
-import co.com.spike.lambda.demo.my.function.mdc.model.response.Response;
 import co.com.spike.lambda.demo.my.function.mdc.config.ConfigRetriever;
-import co.com.spike.lambda.demo.my.function.mdc.service.ILambdaService;
+import co.com.spike.lambda.demo.my.function.mdc.service.TransferService;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 @Singleton
 @Slf4j
-public class LambdaServiceImpl implements ILambdaService {
+public class LambdaServiceImpl extends TransferService {
 
   @Inject ConfigRetriever configRetriever;
 
   @Override
-  public Response get(String message) {
-    configRetriever
+  public Boolean transfer(Long amount) {
+    return configRetriever
         .getConfiguration()
-        .ifPresent(c -> log.info("Configuración disponible: {}", c.toString()));
-
-    return Response.builder().message("echo: " + message).build();
+        .map(c -> {
+          //"lógica de negocio"
+          log.info("Se recuperó la configuración: {}", c);
+          beforeTransfer(amount);
+          boolean outcome = amount > 0;
+          afterTransfer(amount, outcome);
+          return outcome;
+        })
+        .orElse(false);
   }
+
+
 }

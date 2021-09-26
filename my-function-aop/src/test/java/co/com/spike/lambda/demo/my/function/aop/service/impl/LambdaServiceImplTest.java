@@ -1,7 +1,7 @@
-package co.com.spike.lambda.demo.my.function.mdc.service.impl;
+package co.com.spike.lambda.demo.my.function.aop.service.impl;
 
-import co.com.spike.lambda.demo.my.function.mdc.config.ConfigRetriever;
-import co.com.spike.lambda.demo.my.function.mdc.model.Configuration;
+import co.com.spike.lambda.demo.my.function.aop.config.ConfigRetriever;
+import co.com.spike.lambda.demo.my.function.aop.model.Configuration;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
