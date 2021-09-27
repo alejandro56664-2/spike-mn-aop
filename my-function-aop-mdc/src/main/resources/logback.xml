@@ -2,37 +2,22 @@
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <withJansi>true</withJansi>
-    <!-- encoders are assigned the type
-         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
 
-    <configuration>
-
-      <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <withJansi>true</withJansi>
-
-        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-          <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
-            <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSX</timestampFormat>
-            <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
-            <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
-              <prettyPrint>true</prettyPrint>
-            </jsonFormatter>
-          </layout>
-        </encoder>
-        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default
-        <encoder>
-          <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - tx.id=%X{transaction.id}, tx.sender=%X{transaction.sender}, m=%X{methodIntercepted}: %msg%n</pattern>
-        </encoder>
-         -->
-      </appender>
-
-      <root level="info">
-        <appender-ref ref="STDOUT" />
-      </root>
-    </configuration>
-
-  </appender>
-
+    <!--
+      <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+          <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSX</timestampFormat>
+          <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+          <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+            <prettyPrint>true</prettyPrint>
+          </jsonFormatter>
+        </layout>
+      </encoder>
+       -->
+     <encoder>
+       <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - tx.id=%X{transaction.id}, tx.sender=%X{transaction.sender}, m=%X{methodIntercepted}: %msg%n</pattern>
+     </encoder>
+     </appender>
   <root level="info">
     <appender-ref ref="STDOUT" />
   </root>

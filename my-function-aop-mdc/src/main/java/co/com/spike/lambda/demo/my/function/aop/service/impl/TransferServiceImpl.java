@@ -6,6 +6,7 @@ import co.com.spike.lambda.demo.my.function.aop.service.TransferService;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 
 @Singleton
 @Slf4j
@@ -20,7 +21,7 @@ public class TransferServiceImpl extends TransferService {
       .getConfiguration()
       .map(c -> {
         //"lógica de negocio"
-        log.info("Se recuperó la configuración: {}", c);
+        // MDC.put("config", c.toString());
         beforeTransfer(amount);
         boolean outcome = amount > 0;
         afterTransfer(amount, outcome);
