@@ -17,7 +17,7 @@ Se requiere estandarizar el mecanismo de registros de auditoría para funciones 
 Micronaut utilizando una estrategia que no sobrecargue a los desarrolladores y permitiéndoles enfocarse 
 en actividades que den valor al negocio.
 
-Puede encontrar una presentación sobre mejores prácticas de logs en Java y MS [aquí]().
+Puede encontrar una presentación sobre mejores prácticas de logs en Java y MS [aquí](https://drive.google.com/file/d/1LCs9GN4KL1g4ol9u2Mk4HJsguuu5sFkc/view?usp=sharing).
 
 ## Mapeo del contexto en los logs
 
